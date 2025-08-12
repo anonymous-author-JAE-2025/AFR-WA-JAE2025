@@ -32,26 +32,73 @@ albatross_demographic_analysis/
 ├── 📁 01_HMM_modelling/              # Hidden Markov Model analysis
 │   ├── 📁 data/                     # Input demographic data
 │   ├── 📁 function/                 # Custom functions for HMM
-│   ├── 📁 model/                    # Stan/R model definitions
+│   │   └── functions.R              # Core HMM functions
+│   ├── 📁 model/                    # HMM model definitions
+│   │   ├── m_c_cov_phi_psi.R       # Birth covariate models (phi & psi)
+│   │   ├── m_c_cov_psi.R           # Birth covariate models (psi only)
+│   │   ├── m_t_cov_phi_psi.R       # Recruitment covariate models (phi & psi)
+│   │   ├── m_t_cov_phi.R           # Recruitment covariate models (phi only)
+│   │   ├── m_t_cov_psi.R           # Recruitment covariate models (psi only)
+│   │   ├── model_c_all_states.R    # Birth effects all states
+│   │   ├── model_c.R               # Birth effects model
+│   │   ├── model_cohort_quadra_random.R # Cohort quadratic random effects
+│   │   ├── model_cohort_random.R   # Cohort random effects
+│   │   ├── model_cohort.R          # Basic cohort model
+│   │   ├── model_null.R            # Null model
+│   │   ├── model_t_minus_1.R       # Recruitment effects (t-1)
+│   │   ├── model_t_minus_2.R       # Recruitment effects (t-2)
+│   │   ├── model_t_minus_3.R       # Recruitment effects (t-3)
+│   │   ├── model_t.R               # Recruitment effects (t)
+│   │   └── model_trends.R          # Temporal trend models
 │   ├── 📁 outputs/                  # HMM model results
-│   ├── 📁 run_models/               # Model execution examples
-│   │   ├── M2_example.R            # Trend model example
-│   │   ├── M10_example.R           # Random effects model example
-│   │   ├── covariates_birth_c.R    # Birth covariates (c)
-│   │   ├── covariates_recruit_t.R  # Recruitment covariates (t)
-│   │   ├── covariates_recruit_t1.R # Recruitment covariates (t-1)
-│   │   ├── males_analysis.R        # Male-specific models
-│   │   └── females_analysis.R      # Female-specific models
-│   ├── 📁 source/                   # Core model execution functions
-│   └── 📄 *.R                      # Root conversion scripts
+│   ├── 📁 run_models/               # Model execution scripts
+│   │   ├── run_m2_f.R              # Model M2 for females
+│   │   ├── run_m2_m.R              # Model M2 for males
+│   │   ├── run_m10_f.R             # Model M10 for females
+│   │   ├── run_m10_m.R             # Model M10 for males
+│   │   ├── run_m22_f.R             # Model M22 for females
+│   │   ├── run_m22_m.R             # Model M22 for males
+│   │   ├── run_m23_f.R             # Model M23 for females
+│   │   ├── run_m23_m.R             # Model M23 for males
+│   │   ├── run_m30_f.R             # Model M30 for females
+│   │   ├── run_m30_m.R             # Model M30 for males
+│   │   ├── run_m36_f.R             # Model M36 for females
+│   │   └── run_m36_m.R             # Model M36 for males
+│   ├── 📁 source/                   # Core execution engine
+│   │   ├── source_c_all_states.R   # Birth effects all states execution
+│   │   ├── source_c_cov_phi_psi.R  # Birth covariates (phi & psi) execution
+│   │   ├── source_c_cov_psi.R      # Birth covariates (psi) execution
+│   │   ├── source_c.R              # Birth effects execution
+│   │   ├── source_cohort_quadra_random.R # Cohort quadratic random execution
+│   │   ├── source_cohort_random.R  # Cohort random effects execution
+│   │   ├── source_cohort.R         # Cohort model execution
+│   │   ├── source_null.R           # Null model execution
+│   │   ├── source_t_cov_phi_psi.R  # Recruitment covariates (phi & psi) execution
+│   │   ├── source_t_cov_phi.R      # Recruitment covariates (phi) execution
+│   │   ├── source_t_cov_psi.R      # Recruitment covariates (psi) execution
+│   │   ├── source_t.R              # Recruitment effects execution
+│   │   └── source_trends.R         # Temporal trends execution
+│   ├── 📄 01_HMM_modelling.Rproj    # R Project file
+│   ├── 📄 convert_Routput_to_matlab_random_effects.R # R to MATLAB converter (random)
+│   └── 📄 convert_Routput_to_matlab_trend.R         # R to MATLAB converter (trend)
 ├── 📁 02_AFR_markov_chains/         # Age at First Reproduction analysis
 │   ├── 📁 data/                     # Processed HMM outputs
 │   ├── 📁 functions/                # AFR calculation functions
 │   ├── 📁 outputs/                  # Final AFR results
 │   ├── 📁 resources/                # Supporting materials
-│   ├── 📄 *.m                      # MATLAB analysis scripts
-│   └── 📄 *.mat                    # MATLAB workspace files
-└── 📄 README.md                    # This file
+│   ├── 📄 construct_F_matrix.m      # Fecundity matrix construction
+│   ├── 📄 construct_U_matrix.m      # Survival matrix construction
+│   ├── 📄 Info_init.m               # Initialization parameters
+│   ├── 📄 interval_stats.m          # Interval statistics calculation
+│   ├── 📄 invlogit.m                # Inverse logit transformation
+│   ├── 📄 logit.m                   # Logit transformation
+│   ├── 📄 longevity_stats.m         # Longevity statistics
+│   ├── 📄 main_afr_cohort.m         # Main AFR analysis (cohort)
+│   ├── 📄 main_afr_trend.m          # Main AFR analysis (trend)
+│   ├── 📄 repro_stats.m             # Reproductive statistics
+│   ├── 📄 workspace_afr_cohort.mat  # MATLAB workspace (cohort)
+│   └── 📄 workspace_afr_trend.mat   # MATLAB workspace (trend)
+└── 📄 README.md                     # This file
 ```
 
 ## 🔧 Prerequisites
@@ -90,27 +137,41 @@ source("source/hmm_core_functions.R")
 
 ### Step 2: Run Example Models 📊
 ```r
-# Execute trend model example
-source("run_models/M2_example.R")
+# Execute Model M2 (trend models)
+source("run_models/run_m2_f.R")  # Females
+source("run_models/run_m2_m.R")  # Males
 
-# Execute random effects model example  
-source("run_models/M10_example.R")
+# Execute Model M10 (random effects models)  
+source("run_models/run_m10_f.R") # Females
+source("run_models/run_m10_m.R") # Males
 
-# Run sex-specific analyses
-source("run_models/males_analysis.R")
-source("run_models/females_analysis.R")
+# Additional model examples
+source("run_models/run_m22_f.R") # Model M22 females
+source("run_models/run_m22_m.R") # Model M22 males
+source("run_models/run_m30_f.R") # Model M30 females
+source("run_models/run_m30_m.R") # Model M30 males
 ```
 
-### Step 3: Covariate Integration 📈
+### Step 3: Model Execution Framework 📈
 ```r
-# Birth covariates
-source("run_models/covariates_birth_c.R")
+# The source/ folder contains the computational engine
+# Each source file corresponds to a specific model type:
 
-# Recruitment covariates (current year)
-source("run_models/covariates_recruit_t.R")
+# Birth covariate models
+source("source/source_c.R")                    # Basic birth effects
+source("source/source_c_cov_psi.R")           # Birth covariates (psi)
+source("source/source_c_cov_phi_psi.R")       # Birth covariates (phi & psi)
 
-# Recruitment covariates (previous year)
-source("run_models/covariates_recruit_t1.R")
+# Recruitment covariate models  
+source("source/source_t.R")                    # Basic recruitment effects
+source("source/source_t_cov_psi.R")           # Recruitment covariates (psi)
+source("source/source_t_cov_phi.R")           # Recruitment covariates (phi)
+source("source/source_t_cov_phi_psi.R")       # Recruitment covariates (phi & psi)
+
+# Cohort and trend models
+source("source/source_cohort.R")              # Basic cohort model
+source("source/source_trends.R")              # Temporal trend model
+source("source/source_null.R")                # Null model
 ```
 
 ### Step 4: Convert Outputs for MATLAB 🔄
@@ -125,11 +186,15 @@ source("convert_Routput_to_matlab_trend.R")
 % Switch to MATLAB environment
 cd('02_AFR_markov_chains/')
 
-% Run main AFR calculation
-run('main_afr_cohort.m')
+% Run main AFR calculations
+run('main_afr_cohort.m')  % Cohort-based AFR analysis
+run('main_afr_trend.m')   % Trend-based AFR analysis
 
-% Execute trend analysis
-run('main_afr_trend.m')
+% Supporting calculations
+run('construct_F_matrix.m')  % Build fecundity matrices
+run('construct_U_matrix.m')  % Build survival matrices
+run('longevity_stats.m')     % Calculate longevity statistics
+run('repro_stats.m')         % Calculate reproductive statistics
 ```
 
 ## 📋 Detailed Workflow
@@ -143,13 +208,17 @@ run('main_afr_trend.m')
 - **Root scripts**: Handle R-to-MATLAB conversion for downstream analysis
 
 **Model Examples:**
-- **M2**: Demonstrates trend model implementation
-- **M10**: Showcases random effects modeling approach
+- **M2**: Trend model implementation (available for both sexes)
+- **M10**: Random effects modeling approach (available for both sexes)
+- **M22, M23, M30, M36**: Additional model configurations with specific parameter sets
 
-**Covariate Integration:**
-- **Birth effects (c)**: Environmental conditions at hatching
-- **Recruitment effects (t)**: Current year recruitment conditions  
-- **Recruitment effects (t-1)**: Previous year recruitment conditions
+**Model Categories:**
+- **Birth effect models**: `model_c.R`, `model_c_all_states.R`
+- **Recruitment effect models**: `model_t.R` with temporal lags (t-1, t-2, t-3)
+- **Covariate models**: Separate models for phi and psi parameters with birth (c) and recruitment (t) effects
+- **Cohort models**: `model_cohort.R`, `model_cohort_random.R`, `model_cohort_quadra_random.R`
+- **Trend models**: `model_trends.R` for temporal pattern analysis
+- **Null model**: `model_null.R` as baseline comparison
 
 **Sex-Specific Analysis:**
 - Separate modeling pipelines for males and females
@@ -158,14 +227,17 @@ run('main_afr_trend.m')
 ### 📈 AFR Calculation Process (`02_AFR_markov_chains/`)
 
 **MATLAB-Based Analysis:**
-- Utilizes HMM outputs from Stage 1
-- Implements advanced Markov chain methods
-- Generates robust AFR estimates with uncertainty quantification
+- **Matrix construction**: `construct_F_matrix.m` and `construct_U_matrix.m` for demographic matrices
+- **Main AFR calculations**: `main_afr_cohort.m` and `main_afr_trend.m` for different analytical approaches
+- **Statistical analysis**: `longevity_stats.m`, `repro_stats.m`, and `interval_stats.m` for demographic metrics
+- **Utility functions**: `logit.m`, `invlogit.m` for data transformations
+- **Initialization**: `Info_init.m` for parameter setup
 
 **Key Components:**
-- **Data processing**: Converts and structures HMM outputs
-- **Markov chain simulation**: Estimates AFR distributions
-- **Results compilation**: Generates publication-ready outputs
+- **Data processing**: Converts and structures HMM outputs from R
+- **Markov chain simulation**: Estimates AFR distributions using demographic matrices
+- **Results compilation**: Generates comprehensive demographic statistics and AFR estimates
+- **Workspace management**: Pre-configured workspaces (`workspace_afr_cohort.mat`, `workspace_afr_trend.mat`)
 
 ## 🔬 Cluster Computing Integration
 
@@ -173,9 +245,16 @@ This framework is designed for high-performance computing environments:
 
 ### Cluster Execution Strategy
 ```r
-# The source/ folder contains the computational core
+# The source/ folder contains the computational engine
 # The run_models/ scripts serve as lightweight job dispatchers
 # This separation enables efficient cluster resource utilization
+
+# Example: Model M2 execution
+source("run_models/run_m2_f.R")  # Calls -> source("source/source_trends.R")
+source("run_models/run_m2_m.R")  # Calls -> source("source/source_trends.R")
+
+# The source files do the heavy computational work
+# The run_models files handle model-specific parameters and sex separation
 ```
 
 ### Batch Processing
@@ -209,9 +288,9 @@ This framework is designed for high-performance computing environments:
 
 ## 👥 Authors & Contact
 
-**Lead Author:** [Your Name]  
-📧 Email: [your.email@institution.edu]  
-🏛️ Affiliation: [Your Institution]
+**Lead Author:** ****
+📧 Email: ****
+🏛️ Affiliation: ****
 
 ## 🙏 Acknowledgments
 
@@ -236,5 +315,5 @@ This analytical framework provides:
 
 🕊️ *"Understanding albatross demography requires sophisticated methods that can capture the complexity of long-lived seabird life histories."*
 
-**Last updated:** January 2025  
-**Repository maintained by:** [Your Name]
+**Last updated:** August 2025  
+**Repository maintained by:** ****
