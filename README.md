@@ -106,13 +106,13 @@ albatross_demographic_analysis/
 ### Required Software
 - **R** (≥ 4.3.1) with RStan
 - **MATLAB** (≥ R2020a) with Statistics Toolbox
-- **Stan** (≥ 2.21.8) for Bayesian modeling
+- **Nimble** (≥ 1.3.0) for Bayesian modeling
 - **HPC cluster access** (recommended for large analyses)
 
 ### Required R Packages
 ```r
 # Core HMM and Bayesian packages
-install.packages(c("rstan", "loo", "ggplot2", "dplyr"))
+install.packages(c("nimble", "loo", "ggplot2", "dplyr"))
 
 # Additional modeling packages
 install.packages(c("tidyr", "gridExtra", "cowplot", "R.matlab"))
@@ -130,9 +130,6 @@ Navigate to the HMM modeling directory:
 ```r
 # Set working directory
 setwd("01_HMM_modelling/")
-
-# Load core functions
-source("source/hmm_core_functions.R")
 ```
 
 ### Step 2: Run Example Models 📊
@@ -158,12 +155,12 @@ source("run_models/run_m30_m.R") # Model M30 males
 # Each source file corresponds to a specific model type:
 
 # Birth covariate models
-source("source/source_c.R")                    # Basic birth effects
+source("source/source_c.R")                   # Basic birth effects
 source("source/source_c_cov_psi.R")           # Birth covariates (psi)
 source("source/source_c_cov_phi_psi.R")       # Birth covariates (phi & psi)
 
 # Recruitment covariate models  
-source("source/source_t.R")                    # Basic recruitment effects
+source("source/source_t.R")                   # Basic recruitment effects
 source("source/source_t_cov_psi.R")           # Recruitment covariates (psi)
 source("source/source_t_cov_phi.R")           # Recruitment covariates (phi)
 source("source/source_t_cov_phi_psi.R")       # Recruitment covariates (phi & psi)
