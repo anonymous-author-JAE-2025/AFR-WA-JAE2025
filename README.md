@@ -34,20 +34,9 @@ albatross_demographic_analysis/
 │   ├── 📁 function/                 # Custom functions for HMM
 │   │   └── functions.R              # Core HMM functions
 │   ├── 📁 model/                    # HMM model definitions
-│   │   ├── m_c_cov_phi_psi.R       # Birth covariate models (phi & psi)
-│   │   ├── m_c_cov_psi.R           # Birth covariate models (psi only)
-│   │   ├── m_t_cov_phi_psi.R       # Recruitment covariate models (phi & psi)
-│   │   ├── m_t_cov_phi.R           # Recruitment covariate models (phi only)
-│   │   ├── m_t_cov_psi.R           # Recruitment covariate models (psi only)
-│   │   ├── model_c_all_states.R    # Birth effects all states
 │   │   ├── model_c.R               # Birth effects model
-│   │   ├── model_cohort_quadra_random.R # Cohort quadratic random effects
-│   │   ├── model_cohort_random.R   # Cohort random effects
-│   │   ├── model_cohort.R          # Basic cohort model
 │   │   ├── model_null.R            # Null model
 │   │   ├── model_t_minus_1.R       # Recruitment effects (t-1)
-│   │   ├── model_t_minus_2.R       # Recruitment effects (t-2)
-│   │   ├── model_t_minus_3.R       # Recruitment effects (t-3)
 │   │   ├── model_t.R               # Recruitment effects (t)
 │   │   └── model_trends.R          # Temporal trend models
 │   ├── 📁 outputs/                  # HMM model results
@@ -65,17 +54,8 @@ albatross_demographic_analysis/
 │   │   ├── run_m36_f.R             # Model M36 for females
 │   │   └── run_m36_m.R             # Model M36 for males
 │   ├── 📁 source/                   # Core execution engine
-│   │   ├── source_c_all_states.R   # Birth effects all states execution
-│   │   ├── source_c_cov_phi_psi.R  # Birth covariates (phi & psi) execution
-│   │   ├── source_c_cov_psi.R      # Birth covariates (psi) execution
 │   │   ├── source_c.R              # Birth effects execution
-│   │   ├── source_cohort_quadra_random.R # Cohort quadratic random execution
-│   │   ├── source_cohort_random.R  # Cohort random effects execution
-│   │   ├── source_cohort.R         # Cohort model execution
 │   │   ├── source_null.R           # Null model execution
-│   │   ├── source_t_cov_phi_psi.R  # Recruitment covariates (phi & psi) execution
-│   │   ├── source_t_cov_phi.R      # Recruitment covariates (phi) execution
-│   │   ├── source_t_cov_psi.R      # Recruitment covariates (psi) execution
 │   │   ├── source_t.R              # Recruitment effects execution
 │   │   └── source_trends.R         # Temporal trends execution
 │   ├── 📄 01_HMM_modelling.Rproj    # R Project file
